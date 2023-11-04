@@ -7,14 +7,16 @@ import transmissionrpc
 import datetime
 
 # Watch directories
-watch_tv = ''
+watch_series = ''
 watch_movie = ''
 watch_music = ''
+watch_infantil = ''
 
 # Complete download directories
-download_dir_tv = ''
+download_dir_series = ''
 download_dir_movie = ''
 download_dir_music = ''
+download_dir_infantil = ''
 
 client = transmissionrpc.Client(
     address='127.0.0.1',
@@ -28,13 +30,15 @@ log = open('./log.txt', 'a')
 timestamp = '[{:%Y-%m-%d %H:%M:%S}]'.format(datetime.datetime.now())
 print >> log, timestamp +  ' ' + 'Started watch script.'
 print >> log, 'Current watch directories:'
-print >> log, '    TV: ' + watch_tv
+print >> log, 'Series: ' + watch_series
 print >> log, 'Movies: ' + watch_movie
-print >> log, ' Music: ' + watch_music
+print >> log, 'Music: ' + watch_music
+print >> log, 'Infantil: ' + watch_infantil
 print >> log, 'Current download directories:'
-print >> log, '    TV: ' + download_dir_tv
+print >> log, 'Series: ' + download_dir_series
 print >> log, 'Movies: ' + download_dir_movie
-print >> log, ' Music: ' + download_dir_music
+print >> log, 'Music: ' + download_dir_music
+print >> log, 'Infantil: ' + download_dir_infantil
 log.close()
 
 def add(watch_dir, download_dir):
@@ -62,8 +66,9 @@ while True:
     log = open('./log.txt', 'a')
     timestamp = '[{:%Y-%m-%d %H:%M:%S}]'.format(datetime.datetime.now())
     print >> log, timestamp + ' ' + 'Searching directories.'
-    add(watch_tv, download_dir_tv)
+    add(watch_series, download_dir_series)
     add(watch_movie, download_dir_movie)
     add(watch_music, download_dir_music)
+    add(watch_infantil, download_dir_infantil)
     log.close()
     time.sleep(60)
